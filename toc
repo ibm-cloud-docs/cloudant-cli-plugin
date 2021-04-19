@@ -1,9 +1,9 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="cloudant-cli-plugin" category="databases" audience="service" href="/docs/Cloudant?topic=Cloudant-cloudant-cli-plugin" path="cloudant-cli-plugin"}
+{: .toc subcollection="cloudant-cli-plugin" audience="service" href="/docs/Cloudant?topic=Cloudant-cloudant-cli-plugin" path="cloudant-cli-plugin"}
 Cloudant CLI
 
-    {: .navgroup id="learn"}
-    cloudant-cli.md
-    {: .navgroup-end}
+{: .navgroup id="learn"}
+cloudant-cli.md
+{: .navgroup-end}

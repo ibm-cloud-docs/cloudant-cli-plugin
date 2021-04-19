@@ -2,11 +2,11 @@
  
 copyright:
   years: 2021
-lastupdated: "2021-02-10"
+lastupdated: "2021-04-16"
 
 subcollection: cloudant-cli-plugin
 
-keywords: _CLI name_ CLI, _CLI name_ command line , _CLI name_ terminal, _CLI name_ shell, _other relevant keywords_
+keywords: Cloudant CLI, Cloudant command line , Cloudant terminal, Cloudant shell
 
 ---
 
@@ -37,13 +37,12 @@ Also provide an appropriate ID above that aligns with your offering name, for ex
 The short description section should include one to two sentences describing why a developer would want to use this cli. This should be conversational style. For search engine optimization, include your offering's CLI name. Keep the {: shortdesc} after the first paragraph so that the framework renders it properly.
 Example: -->
 
-The {{site.data.keyword.cloud}} command-line interface (CLI) provides extra capabilities for service offerings. You can use {{site.data.keyword.cloudant_short_notm}} CLI Plugin to manage throughput details and event types that are being sent from your {{site.data.keyword.cloudant_short_notm}} account to the {{site.data.keyword.at_full}} service.
+The {{site.data.keyword.cloud}} command-line interface (CLI) provides extra capabilities for service offerings. You can use {{site.data.keyword.cloudant_short_notm}} CLI plug-in to manage throughput details and event types that are being sent from your {{site.data.keyword.cloudant_short_notm}} account to the {{site.data.keyword.at_full}} service.
 {: shortdesc} 
 
 <!-- Prerequisites: REQUIRED
 This section tells users what's required to install and use the CLI commands. If your plug-in requires detailed or lengthy configuration steps, link out to a separate task topic. -->
 
-<!-- Change the ID below to match your CLI. -->
 ## Prerequisites
 {: #cloudant-cli-prereq}
 
@@ -54,13 +53,11 @@ This section tells users what's required to install and use the CLI commands. If
 ibmcloud plugin install cloudant
 ```
 {: pre}
-<!-- Replace the <cli-plugin> above with the name of your CLI plug-in. Run 'ibmcloud plugin repo-plugins' to find the name.-->
-* Optional: Use [`ibmcloud login` command](https://cloud.ibm.com/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) for logging in to your {{site.data.keyword.cloud_notm}} account.
-
-Use the environment variables `CLOUDANT_URL` and `CLOUDANT_APIKEY` in place of using the login command above.  More details about these environment variables can be found in [Service configuration](#service-configuration).
-{: tip} 
 
 <!-- Optionally include any other post-installation configuration that might be required for your service. -->
+
+* Use [`ibmcloud login` command](https://cloud.ibm.com/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) for logging in to your {{site.data.keyword.cloud_notm}} account.
+* Set {{site.data.keyword.cloudant_short_notm}} service URL. For more information, see [Service configuration](#service-configuration).
 
 You're notified on the command line when updates to the {{site.data.keyword.cloud_notm}} CLI and plug-ins are available. Be sure to keep your CLI up to date so that you can use the latest commands. You can view the current version of all installed plug-ins by running `ibmcloud plugin list`.
 {: tip}
@@ -69,24 +66,26 @@ You're notified on the command line when updates to the {{site.data.keyword.clou
 List any other prerequisites/authorization/environments that are required to use the CLI commands. Or give a brief introduction to the prerequisites/authorization/environments that the CLI commands might use. Use H3 headings (###) as needed to organize your content.
 Example: -->
 
-{{site.data.keyword.cloud_notm}} CLI requires Java™ 1.8.0. You can download the CLI from {{site.data.keyword.cloud_notm}} to use on your local system as a complement to the {{site.data.keyword.cloud_notm}} console.
-{: note}
+### Service configuration
+When you make a server resource request, the Cloudant account URL from the service credentials (for example,`https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the `CLOUDANT_URL` environment variable.
+You can define this variable two ways:
+1. Export them as environment variables for example,`export CLOUDANT_URL=...`.
+2. Store them in a [credentials file](https://cloud.ibm.com/apidocs/cloudant?code=go#authentication-with-external-configuration).
 
-## Service configuration
-The Cloudant account URL e.g. `https://account.appdomain.cloud` in the service credentials is not automatically handled when making server resource requests. Setting the `CLOUDANT_URL` environment variable with your account URL is required.
-There are two methods to provide this variable to the CLI plugin:
-1. Export them as environment variables e.g. `export CLOUDANT_URL=...`
-2. Store them in a [credentials file](https://cloud.ibm.com/apidocs/cloudant?code=go#authentication-with-external-configuration)
+As an alternative to `ibmcloud login`, you can set the environment variable `CLOUDANT_APIKEY` to an IAM API key.
+{: tip} 
+
+<!-- Paste your generated CLI reference after this point -->
 
 ## Server
 {: #cloudant-server-cli}
 
 Commands for Server resource.
 
-### ibmcloud cloudant classic capacity-throughput-information
+### `ibmcloud cloudant classic capacity-throughput-information`
 {: #cloudant-cli-capacity-throughput-information-command}
 
-View the amount of provisioned throughput capacity allocated to an IBM Cloudant instance and what is the target provisioned throughput capacity.
+View the amount of provisioned throughput capacity that is allocated to an IBM Cloudant instance and what is the target provisioned throughput capacity.
 
 ```sh
 ibmcloud cloudant classic capacity-throughput-information 
@@ -104,7 +103,7 @@ ibmcloud cloudant c capacity-throughput-information
 {: pre}
 
 #### Example output
-{: #cloudant-capacity-throughput-information-cli-examples}
+{: #cloudant-capacity-throughput-information-cli-examples-output}
 
 ```json
 {
@@ -119,7 +118,7 @@ ibmcloud cloudant c capacity-throughput-information
 ```
 {: screen}
 
-### ibmcloud cloudant classic put-capacity-throughput-information
+### `ibmcloud cloudant classic put-capacity-throughput-information`
 {: #cloudant-cli-put-capacity-throughput-information-command}
 
 Sets the target provisioned throughput capacity for an IBM Cloudant instance. When target capacity is changed, the current capacity asynchronously changes to meet the target capacity.
@@ -149,7 +148,7 @@ ibmcloud cloudant c put-capacity-throughput-information --blocks 10
 {: pre}
 
 #### Example output
-{: #cloudant-put-capacity-throughput-information-cli-examples}
+{: #cloudant-put-capacity-throughput-information-cli-examples-output}
 
 ```json
 {
@@ -178,7 +177,7 @@ ibmcloud cloudant c put-capacity-throughput-information --blocks 10
 
 Commands for Monitoring resource.
 
-### ibmcloud cloudant classic activity-tracker-events-information
+### `ibmcloud cloudant classic activity-tracker-events-information`
 {: #cloudant-cli-activity-tracker-events-information-command}
 
 Check event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
@@ -199,7 +198,7 @@ ibmcloud cloudant c activity-tracker-events-information
 {: pre}
 
 #### Example output
-{: #cloudant-activity-tracker-events-information-cli-examples}
+{: #cloudant-activity-tracker-events-information-cli-examples-output}
 
 ```json
 {
@@ -211,7 +210,7 @@ ibmcloud cloudant c activity-tracker-events-information
 ```
 {: screen}
 
-### ibmcloud cloudant classic post-activity-tracker-events-configuration
+### `ibmcloud cloudant classic post-activity-tracker-events-configuration`
 {: #cloudant-cli-post-activity-tracker-events-configuration-command}
 
 Configure event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
@@ -241,7 +240,7 @@ ibmcloud cloudant c post-activity-tracker-events-configuration --types managemen
 {: pre}
 
 #### Example output
-{: #cloudant-current-throughput-information-cli-examples}
+{: #cloudant-post-activity-tracker-events-configuration-cli-examples-output}
 
 ```json
 {
@@ -250,7 +249,7 @@ ibmcloud cloudant c post-activity-tracker-events-configuration --types managemen
 ```
 {: screen}
 
-### ibmcloud cloudant classic current-throughput-information
+### `ibmcloud cloudant classic current-throughput-information`
 {: #cloudant-cli-current-throughput-information-command}
 
 View the current consumption of provisioned throughput capacity for an IBM Cloudant instance. The current consumption shows the quantities of reads, writes, and global queries conducted against the instance for a given second.
@@ -271,7 +270,7 @@ ibmcloud cloudant c current-throughput-information
 {: pre}
 
 #### Example output
-{: #cloudant-current-throughput-information-cli-examples}
+{: #cloudant-current-throughput-information-cli-examples-output}
 
 ```json
 {
