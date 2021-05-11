@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-04-27"
+lastupdated: "2021-05-11"
 
 subcollection: cloudant-cli-plugin
 
@@ -227,6 +227,7 @@ ibmcloud cloudant classic events-config-update --types TYPES
 <dt>--types ([]string)</dt>
 <dd>An array of event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance. "management" is a required element of this array. Required.</dd>
 <dd>The minimum length is `1` item.</dd>
+<dd>Allowable values are: management, data.</dd>
 </dl>
 
 #### Examples
