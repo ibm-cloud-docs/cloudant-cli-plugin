@@ -31,7 +31,7 @@ In the title, list the name of your CLI, such as "Container Registry CLI (ibmclo
 Also provide an appropriate ID above that aligns with your offering name, for example: #container-registry-cli. *All* IDs must be unique across *all* CLI references. -->
 
 # {{site.data.keyword.cloudant_short_notm}} CLI
-{: #cloudant-cli-plugin}
+{: #cloudant-cli}
 
 <!-- Short description: REQUIRED
 The short description section should include one to two sentences describing why a developer would want to use this cli. This should be conversational style. For search engine optimization, include your offering's CLI name. Keep the {: shortdesc} after the first paragraph so that the framework renders it properly.
