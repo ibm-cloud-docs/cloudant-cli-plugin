@@ -1,0 +1,14 @@
+toc:
+  properties:
+    subcollection: cloudant-cli-plugin
+    audience: service
+    href: /docs/cloudant-cli-plugin
+    path: cloudant-cli-plugin
+    label: IBM Cloudant CLI
+    version: 2
+
+  entries:
+    - navgroup:
+      id: reference
+      topics:
+        - cloudant-cli.md
