@@ -1,9 +1,9 @@
 toc:
   properties:
-    subcollection: cloudant-cli-plugin
+    subcollection: Cloudant-cli-plugin
     audience: service
-    href: /docs/cloudant-cli-plugin
-    path: cloudant-cli-plugin
+    href: /docs/Cloudant-cli-plugin
+    path: Cloudant-cli-plugin
     label: IBM Cloudant CLI
     version: 2
 
