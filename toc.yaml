@@ -9,6 +9,6 @@ toc:
 
   entries:
     - navgroup:
-      id: reference
-      topics:
-        - cloudant-cli.md
+        id: reference
+        topics:
+          - cloudant-cli.md
