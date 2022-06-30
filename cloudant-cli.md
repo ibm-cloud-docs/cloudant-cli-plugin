@@ -2,11 +2,11 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-07"
+lastupdated: "2022-07-15"
 
 subcollection: cloudant-cli-plugin
 
-keywords: Cloudant CLI, Cloudant command line , Cloudant terminal, Cloudant shell
+keywords: Cloudant CLI, Cloudant command line,  Cloudant terminal, Cloudant shell
 
 ---
 
@@ -30,6 +30,7 @@ Example: -->
 
 The {{site.data.keyword.cloud}} Command Line Interface (CLI) provides extra capabilities for service offerings. You can use {{site.data.keyword.cloudant_short_notm}} CLI plug-in to manage throughput details and event types that are being sent from your {{site.data.keyword.cloudant_short_notm}} account to the {{site.data.keyword.at_full}} service.
 {: shortdesc}
+
 
 <!-- Prerequisites: REQUIRED
 This section tells users what's required to install and use the CLI commands. If your plug-in requires detailed or lengthy configuration steps, link out to a separate task topic. -->
@@ -61,27 +62,31 @@ Example: -->
 When you make a server resource request, the Cloudant account URL from the service credentials (for example,`https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the `CLOUDANT_URL` environment variable.
 You can define this variable two ways:
 1. Export them as environment variables, for example,`export CLOUDANT_URL=...`.
-2. Store them in a [credentials file](https://cloud.ibm.com/apidocs/cloudant?code=go#authentication-with-external-configuration).
+2. Store them in a [credentials file](/apidocs/cloudant?code=go#authentication-with-external-configuration).
 
 As an alternative to `ibmcloud login`, you can set the environment variable `CLOUDANT_APIKEY` to an IAM API key.
 {: tip}
 
 <!-- Paste your generated CLI reference after this point -->
 
+## Other information
+
+The `classic` and the `c` subcommands are deprecated since version `0.0.5` and will be unsupported from 31 July 2023. The operations from the `classic` command are now available on the `cloudant` command. Track the [changes log](/docs/Cloudant?topic=Cloudant-cli-change-log) for changes in the interface. {: deprecated}
+
 ## Server
 {: #cloudant-server-cli}
 
 Commands for Server resource.
 
-### `ibmcloud cloudant classic capacity`
+### `ibmcloud cloudant capacity`
 {: #cloudant-cli-capacity-command}
 
 View the amount of provisioned throughput capacity that is allocated to an IBM Cloudant instance and what is the target provisioned throughput capacity.
 
 ```sh
-ibmcloud cloudant classic capacity
+ibmcloud cloudant capacity 
 ```
-{: pre}
+
 
 #### Examples
 {: #cloudant-capacity-cli-examples}
@@ -89,7 +94,7 @@ ibmcloud cloudant classic capacity
 Example request
 
 ```sh
-ibmcloud cloudant c capacity
+ibmcloud cloudant capacity
 ```
 {: pre}
 
@@ -102,18 +107,9 @@ Example CapacityThroughputInformation response.
 {
   "current" : {
     "throughput" : {
-      "blocks" : 5,
       "query" : 25,
       "read" : 500,
       "write" : 250
-    }
-  },
-  "target" : {
-    "throughput" : {
-      "blocks" : 10,
-      "query" : 50,
-      "read" : 1000,
-      "write" : 500
     }
   }
 }
@@ -132,15 +128,15 @@ current.throughput
 
 If a custom JMESPath query is provided, it replaces the default JMESPath.
 
-### `ibmcloud cloudant classic capacity-update`
+### `ibmcloud cloudant capacity-update`
 {: #cloudant-cli-capacity-update-command}
 
 Sets the target provisioned throughput capacity for an IBM Cloudant instance. When target capacity is changed, the current capacity asynchronously changes to meet the target capacity.
 
 ```sh
-ibmcloud cloudant classic capacity-update --blocks BLOCKS
+ibmcloud cloudant capacity-update --blocks BLOCKS 
 ```
-{: pre}
+
 
 #### Command options
 {: #cloudant-capacity-update-cli-options}
@@ -155,7 +151,7 @@ ibmcloud cloudant classic capacity-update --blocks BLOCKS
 Example request
 
 ```sh
-ibmcloud cloudant c capacity-update --blocks 10
+ibmcloud cloudant capacity-update --blocks 10
 ```
 {: pre}
 
@@ -166,14 +162,6 @@ Example CapacityThroughputInformation response.
 
 ```json
 {
-  "current" : {
-    "throughput" : {
-      "blocks" : 5,
-      "query" : 25,
-      "read" : 500,
-      "write" : 250
-    }
-  },
   "target" : {
     "throughput" : {
       "blocks" : 10,
@@ -203,15 +191,14 @@ If a custom JMESPath query is provided, it replaces the default JMESPath.
 
 Commands for Monitoring resource.
 
-### `ibmcloud cloudant classic events-config`
+### `ibmcloud cloudant events-config`
 {: #cloudant-cli-events-config-command}
 
 Check event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
 
 ```sh
-ibmcloud cloudant classic events-config
+ibmcloud cloudant events-config 
 ```
-{: pre}
 
 
 #### Examples
@@ -220,7 +207,7 @@ ibmcloud cloudant classic events-config
 Example request
 
 ```sh
-ibmcloud cloudant c events-config
+ibmcloud cloudant events-config
 ```
 {: pre}
 
@@ -248,15 +235,15 @@ types
 
 If a custom JMESPath query is provided, it replaces the default JMESPath.
 
-### `ibmcloud cloudant classic events-config-update`
+### `ibmcloud cloudant events-config-update`
 {: #cloudant-cli-events-config-update-command}
 
 Configure event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
 
 ```sh
-ibmcloud cloudant classic events-config-update --types TYPES
+ibmcloud cloudant events-config-update --types TYPES 
 ```
-{: pre}
+
 
 #### Command options
 {: #cloudant-events-config-update-cli-options}
@@ -271,7 +258,7 @@ ibmcloud cloudant classic events-config-update --types TYPES
 Example request
 
 ```sh
-ibmcloud cloudant c events-config-update --types management,data
+ibmcloud cloudant events-config-update --types management,data
 ```
 {: pre}
 
@@ -287,15 +274,15 @@ Example Ok response.
 ```
 {: screen}
 
-### `ibmcloud cloudant classic throughput`
+### `ibmcloud cloudant throughput`
 {: #cloudant-cli-throughput-command}
 
 View the current consumption of provisioned throughput capacity for an IBM Cloudant instance. The current consumption shows the quantities of reads, writes, and global queries conducted against the instance for a given second.
 
 ```sh
-ibmcloud cloudant classic throughput
+ibmcloud cloudant throughput 
 ```
-{: pre}
+
 
 #### Examples
 {: #cloudant-throughput-cli-examples}
@@ -303,7 +290,7 @@ ibmcloud cloudant classic throughput
 Example request
 
 ```sh
-ibmcloud cloudant c throughput
+ibmcloud cloudant throughput
 ```
 {: pre}
 
