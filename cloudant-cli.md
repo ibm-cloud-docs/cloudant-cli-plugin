@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2022-07-15"
+lastupdated: "2023-02-09"
 
 subcollection: cloudant-cli-plugin
 
@@ -84,12 +84,12 @@ Commands for Server resource.
 View the amount of provisioned throughput capacity that is allocated to an IBM Cloudant instance and what is the target provisioned throughput capacity.
 
 ```sh
-ibmcloud cloudant capacity 
+ibmcloud cloudant capacity
 ```
 
 
 #### Examples
-{: #cloudant-capacity-cli-examples}
+{: #cloudant-capacity-examples}
 
 Example request
 
@@ -98,8 +98,21 @@ ibmcloud cloudant capacity
 ```
 {: pre}
 
-#### Example output
-{: #cloudant-capacity-cli-output}
+#### Example default output
+{: #cloudant-capacity-default-cli-output}
+
+Example CapacityThroughputInformation response.
+
+```
+blocks  5
+query 25
+read  500
+write 250
+```
+{: screen}
+
+#### Example full output
+{: #cloudant-capacity-full-cli-output}
 
 Example CapacityThroughputInformation response.
 
@@ -107,9 +120,18 @@ Example CapacityThroughputInformation response.
 {
   "current" : {
     "throughput" : {
+      "blocks" : 5,
       "query" : 25,
       "read" : 500,
       "write" : 250
+    }
+  },
+  "target" : {
+    "throughput" : {
+      "blocks" : 10,
+      "query" : 50,
+      "read" : 1000,
+      "write" : 500
     }
   }
 }
@@ -119,14 +141,11 @@ Example CapacityThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-capacity-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default:
+A JMESPath query is applied to the output of this command by default. The default JMESPath is:
 
-```sh
-current.throughput
-```
-{: screen}
+    current.throughput
 
-If a custom JMESPath query is provided, it replaces the default JMESPath.
+If a custom JMESPath query is provided, it will replace the default JMESPath.
 
 ### `ibmcloud cloudant capacity-update`
 {: #cloudant-cli-capacity-update-command}
@@ -134,19 +153,20 @@ If a custom JMESPath query is provided, it replaces the default JMESPath.
 Sets the target provisioned throughput capacity for an IBM Cloudant instance. When target capacity is changed, the current capacity asynchronously changes to meet the target capacity.
 
 ```sh
-ibmcloud cloudant capacity-update --blocks BLOCKS 
+ibmcloud cloudant capacity-update --blocks BLOCKS
 ```
 
 
 #### Command options
 {: #cloudant-capacity-update-cli-options}
 
-`--blocks (int64)`
+`--blocks` (int64)
 :   A number of blocks of throughput units. A block consists of 100 reads/sec, 50 writes/sec, and 5 global queries/sec of provisioned throughput capacity. Required.
-:   The minimum value is `0`.
+
+    The minimum value is `0`.
 
 #### Examples
-{: #cloudant-capacity-update-cli-examples}
+{: #cloudant-capacity-update-examples}
 
 Example request
 
@@ -155,13 +175,34 @@ ibmcloud cloudant capacity-update --blocks 10
 ```
 {: pre}
 
-#### Example output
-{: #cloudant-capacity-update-cli-output}
+#### Example default output
+{: #cloudant-capacity-update-default-cli-output}
+
+Example CapacityThroughputInformation response.
+
+```
+blocks  10
+query 50
+read  1000
+write 500
+```
+{: screen}
+
+#### Example full output
+{: #cloudant-capacity-update-full-cli-output}
 
 Example CapacityThroughputInformation response.
 
 ```json
 {
+  "current" : {
+    "throughput" : {
+      "blocks" : 5,
+      "query" : 25,
+      "read" : 500,
+      "write" : 250
+    }
+  },
   "target" : {
     "throughput" : {
       "blocks" : 10,
@@ -177,14 +218,11 @@ Example CapacityThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-capacity-update-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default:
+A JMESPath query is applied to the output of this command by default. The default JMESPath is:
 
-```sh
-target.throughput
-```
-{: screen}
+    target.throughput
 
-If a custom JMESPath query is provided, it replaces the default JMESPath.
+If a custom JMESPath query is provided, it will replace the default JMESPath.
 
 ## Monitoring
 {: #cloudant-monitoring-cli}
@@ -194,15 +232,15 @@ Commands for Monitoring resource.
 ### `ibmcloud cloudant events-config`
 {: #cloudant-cli-events-config-command}
 
-Check event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
+Check event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance.
 
 ```sh
-ibmcloud cloudant events-config 
+ibmcloud cloudant events-config
 ```
 
 
 #### Examples
-{: #cloudant-events-config-cli-examples}
+{: #cloudant-events-config-examples}
 
 Example request
 
@@ -211,8 +249,19 @@ ibmcloud cloudant events-config
 ```
 {: pre}
 
-#### Example output
-{: #cloudant-events-config-cli-output}
+#### Example default output
+{: #cloudant-events-config-default-cli-output}
+
+Example ActivityTrackerEvents request and response.
+
+```
+management
+data
+```
+{: screen}
+
+#### Example full output
+{: #cloudant-events-config-full-cli-output}
 
 Example ActivityTrackerEvents request and response.
 
@@ -226,34 +275,32 @@ Example ActivityTrackerEvents request and response.
 #### Default JMESPath
 {: #cloudant-events-config-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default:
+A JMESPath query is applied to the output of this command by default. The default JMESPath is:
 
-```sh
-types
-```
-{: screen}
+    types
 
-If a custom JMESPath query is provided, it replaces the default JMESPath.
+If a custom JMESPath query is provided, it will replace the default JMESPath.
 
 ### `ibmcloud cloudant events-config-update`
 {: #cloudant-cli-events-config-update-command}
 
-Configure event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance.
+Configure event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance.
 
 ```sh
-ibmcloud cloudant events-config-update --types TYPES 
+ibmcloud cloudant events-config-update --types TYPES
 ```
 
 
 #### Command options
 {: #cloudant-events-config-update-cli-options}
 
-`--types ([]string)`
-:   An array of event types that are being sent to {{site.data.keyword.at_full_notm}} for the IBM Cloudant instance. "management" is a required element of this array. Required.
-:   Allowable list items are: `management`, `data`. The minimum length is `1` item.
+`--types` ([]string)
+:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
+
+    Allowable list items are: `management`, `data`. The minimum length is `1` item.
 
 #### Examples
-{: #cloudant-events-config-update-cli-examples}
+{: #cloudant-events-config-update-examples}
 
 Example request
 
@@ -280,12 +327,12 @@ Example Ok response.
 View the current consumption of provisioned throughput capacity for an IBM Cloudant instance. The current consumption shows the quantities of reads, writes, and global queries conducted against the instance for a given second.
 
 ```sh
-ibmcloud cloudant throughput 
+ibmcloud cloudant throughput
 ```
 
 
 #### Examples
-{: #cloudant-throughput-cli-examples}
+{: #cloudant-throughput-examples}
 
 Example request
 
@@ -294,8 +341,20 @@ ibmcloud cloudant throughput
 ```
 {: pre}
 
-#### Example output
-{: #cloudant-throughput-cli-output}
+#### Example default output
+{: #cloudant-throughput-default-cli-output}
+
+Example CurrentThroughputInformation response.
+
+```
+query 13
+read  133
+write 42
+```
+{: screen}
+
+#### Example full output
+{: #cloudant-throughput-full-cli-output}
 
 Example CurrentThroughputInformation response.
 
@@ -313,11 +372,8 @@ Example CurrentThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-throughput-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default:
+A JMESPath query is applied to the output of this command by default. The default JMESPath is:
 
-```sh
-throughput
-```
-{: screen}
+    throughput
 
-If a custom JMESPath query is provided, it replaces the default JMESPath.
+If a custom JMESPath query is provided, it will replace the default JMESPath.
