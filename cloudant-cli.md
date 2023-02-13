@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2023-02-15"
+lastupdated: "2023-02-09"
 
 subcollection: cloudant-cli-plugin
 
@@ -61,7 +61,7 @@ Example: -->
 ### Service configuration
 {: #cloudant-cli-service-config}
 
-When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example, `https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the `CLOUDANT_URL` environment variable.
+When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example,`https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the `CLOUDANT_URL` environment variable.
 {: tip}
 
 You can define this variable two ways:
