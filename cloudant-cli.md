@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2023-02-09"
+lastupdated: "2023-04-14"
 
 subcollection: cloudant-cli-plugin
 
@@ -92,7 +92,7 @@ ibmcloud cloudant capacity
 ```
 
 
-#### Examples
+#### Example
 {: #cloudant-capacity-examples}
 
 Example request
@@ -108,10 +108,10 @@ ibmcloud cloudant capacity
 Example CapacityThroughputInformation response.
 
 ```
-blocks  5
-query 25
-read  500
-write 250
+blocks	5
+query	25
+read	500
+write	250
 ```
 {: screen}
 
@@ -169,7 +169,7 @@ ibmcloud cloudant capacity-update --blocks BLOCKS
 
     The minimum value is `0`.
 
-#### Examples
+#### Example
 {: #cloudant-capacity-update-examples}
 
 Example request
@@ -185,10 +185,10 @@ ibmcloud cloudant capacity-update --blocks 10
 Example CapacityThroughputInformation response.
 
 ```
-blocks  10
-query 50
-read  1000
-write 500
+blocks	10
+query	50
+read	1000
+write	500
 ```
 {: screen}
 
@@ -243,7 +243,7 @@ ibmcloud cloudant events-config
 ```
 
 
-#### Examples
+#### Example
 {: #cloudant-events-config-examples}
 
 Example request
@@ -299,11 +299,11 @@ ibmcloud cloudant events-config-update --types TYPES
 {: #cloudant-events-config-update-cli-options}
 
 `--types` ([]string)
-:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
+:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. Allowable values: management, data. "management" is a required element of this array. Required.
 
     Allowable list items are: `management`, `data`. The minimum length is `1` item.
 
-#### Examples
+#### Example
 {: #cloudant-events-config-update-examples}
 
 Example request
@@ -335,7 +335,7 @@ ibmcloud cloudant throughput
 ```
 
 
-#### Examples
+#### Example
 {: #cloudant-throughput-examples}
 
 Example request
@@ -351,9 +351,9 @@ ibmcloud cloudant throughput
 Example CurrentThroughputInformation response.
 
 ```
-query 13
-read  133
-write 42
+query	13
+read	133
+write	42
 ```
 {: screen}
 
