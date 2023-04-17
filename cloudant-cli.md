@@ -4,7 +4,7 @@ copyright:
   years: 2021
 lastupdated: "2023-04-14"
 
-subcollection: cloudant-cli-plugin
+subcollection: Cloudant-cli-plugin
 
 keywords: Cloudant CLI, Cloudant command line,  Cloudant terminal, Cloudant shell
 
