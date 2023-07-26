@@ -1,8 +1,8 @@
 ---
 
 copyright:
-years: 2021
-lastupdated: "2023-07-24"
+  years: 2021, 2023
+lastupdated: "2023-07-26"
 
 subcollection: Cloudant-cli-plugin
 
@@ -77,6 +77,7 @@ ibmcloud cloudant url -q --resource-id <resource-id>
 ```
 
 #### Inline configuration
+{: #cloudant-cli-inline-config}
 
 Inline configuration happens with the `--service-url` flag. All sub-commands like `events-config` or `capacity` can be used with inline configured service URL which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command.
 
@@ -94,6 +95,7 @@ ibmcloud cloudant events-config --service-url $(ibmcloud cloudant url -q --resou
 ```
 
 #### Global configuration
+{: #cloudant-cli-global-config}
 
 Global configuration happens with the [config sub-command](#cloudant-cli-config-command). This stores persistent configuration so that it does not need to be manually specified each time the plugin is invoked. The following example sets the service url globally which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command, then uses the set value with sub-commands like `events-config` or `capacity`.
 
@@ -114,6 +116,7 @@ ibmcloud cloudant config set service-url $(ibmcloud cloudant url -q --resource-i
 
 
 #### Environment variable setting
+{: #cloudant-cli-env-var-setting}
 
 For this approach you need to set the `CLOUDANT_URL` environment variable.
 
@@ -125,6 +128,7 @@ As an alternative to `ibmcloud login`, you can set the environment variable `CLO
 {: tip}
 
 ## Other information
+{: #cloudant-cli-other-info}
 
 The `classic` and the `c` subcommands were deprecated in version `0.0.5` and removed from version `0.1.0`. The operations from the `classic` command are available on the `cloudant` command. Track the [changes log](/docs/Cloudant?topic=Cloudant-cli-change-log) for changes in the interface. {: deprecated}
 
@@ -257,7 +261,7 @@ ibmcloud cloudant config list
 ```sh
 ibmcloud cloudant config list
 ```
-{: pre}
+
 ## Server
 {: #cloudant-server-cli}
 
