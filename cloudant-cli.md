@@ -484,7 +484,7 @@ ibmcloud cloudant events-config-update --types TYPES
 {: #cloudant-events-config-update-cli-options}
 
 `--types` ([]string)
-:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
+:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. Allowable values: management, data. "management" is a required element of this array. Required.
 
     Allowable list items are: `management`, `data`. The minimum length is `1` item.
 
