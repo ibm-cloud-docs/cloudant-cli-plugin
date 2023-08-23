@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2023-04-14"
+  years: 2021, 2023
+lastupdated: "2023-07-26"
 
 subcollection: Cloudant-cli-plugin
 
@@ -61,8 +61,64 @@ Example: -->
 ### Service configuration
 {: #cloudant-cli-service-config}
 
-When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example, `https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the `CLOUDANT_URL` environment variable.
+When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example, `https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the URL of your Cloudant instance first. You can set the URL by [inline configuration](#inline-configuration), [global configuration](#global-configuration), or [setting an environment variable](#environment-variable-setting).
+
+Inline configuration overrides the global configuration and the environment variable setting, while global configuration overrides the environment variable setting.
 {: tip}
+
+If you are unsure about your server URL you can find it [by the instance ID of your cloud resource](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance). The instance ID can be found by the name of your service. The following example gets first the GUID then the CRN ID by service name (for example `Cloudant-fg`). Either of GUID and CRN ID can be used as `<resource-id>` to get the Cloudant instance URL.
+```sh
+# Get GUID of the service instance by service name, which can be used as a <resource-id> later
+ibmcloud resource service-instance <service-name> --output json | jq -r '.[0].guid'
+# Get CRN ID of the service instance by service name, which can be used as a <resource-id> later
+ibmcloud resource service-instance <service-name> --output json | jq -r '.[0].id'
+# Get <service-url> of your Cloudant instance by resource ID (can be either the GUID or the CRN ID)
+ibmcloud cloudant url -q --resource-id <resource-id>
+```
+
+#### Inline configuration
+{: #cloudant-cli-inline-config}
+
+Inline configuration happens with the `--service-url` flag. All sub-commands like `events-config` or `capacity` can be used with inline configured service URL which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command.
+
+```sh
+# Use events-config sub-command with inline configured service url
+ibmcloud cloudant events-config --service-url <service-url>
+# Use capacity sub-command with inline configured service url
+ibmcloud cloudant capacity --service-url <service-url>
+```
+
+The following example shows a shorthand for using the `events-config` with inline configured service URL:
+
+```sh
+ibmcloud cloudant events-config --service-url $(ibmcloud cloudant url -q --resource-id <resource-id>)
+```
+
+#### Global configuration
+{: #cloudant-cli-global-config}
+
+Global configuration happens with the [config sub-command](#cloudant-cli-config-command). This stores persistent configuration so that it does not need to be manually specified each time the plugin is invoked. The following example sets the service url globally which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command, then uses the set value with sub-commands like `events-config` or `capacity`.
+
+```sh
+# Set service url globally
+ibmcloud cloudant config set service-url <service-url>
+# Use events-config sub-command with globally configured service url
+ibmcloud cloudant events-config
+# Use capacity sub-command with globally configured service url
+ibmcloud cloudant capacity
+```
+
+The following example shows a shorthand for setting service URL with the help of the `ibmcloud cloudant url` sub-command:
+
+```sh
+ibmcloud cloudant config set service-url $(ibmcloud cloudant url -q --resource-id <resource-id>)
+```
+
+
+#### Environment variable setting
+{: #cloudant-cli-env-var-setting}
+
+For this approach you need to set the `CLOUDANT_URL` environment variable.
 
 You can define this variable two ways:
 1. Export them as environment variables, for example,`export CLOUDANT_URL=...`.
@@ -71,11 +127,140 @@ You can define this variable two ways:
 As an alternative to `ibmcloud login`, you can set the environment variable `CLOUDANT_APIKEY` to an IAM API key.
 {: tip}
 
-<!-- Paste your generated CLI reference after this point -->
-
 ## Other information
+{: #cloudant-cli-other-info}
 
-The `classic` and the `c` subcommands are deprecated since version `0.0.5` and will be unsupported from 31 July 2023. The operations from the `classic` command are now available on the `cloudant` command. Track the [changes log](/docs/Cloudant?topic=Cloudant-cli-change-log) for changes in the interface. {: deprecated}
+The `classic` and the `c` subcommands were deprecated in version `0.0.5` and removed from version `0.1.0`. The operations from the `classic` command are available on the `cloudant` command. Track the [changes log](/docs/Cloudant?topic=Cloudant-cli-change-log) for changes in the interface. {: deprecated}
+
+<!-- Generated CLI reference will be automatically pasted after this point -->
+## Globals
+### Commands
+#### `ibmcloud cloudant url`
+{: #cloudant-cli-url-command}
+
+Retrieves the service URL from the given resource.
+
+```sh
+ibmcloud cloudant url --resource-id RESOURCE_ID
+```
+
+##### Command options
+{: #cloudant-url-cli-options}
+
+`--resource-id` (string)
+:   The ID of the cloud resource. Required.
+    &nbsp;
+
+##### Example
+{: #cloudant-url-examples}
+
+```sh
+ibmcloud cloudant url \
+    --resource-id="8d7af921-b136-4078-9666-081bd8470d94"
+```
+{: pre}
+
+### Options
+{: #cloudant-global-options}
+
+`--output` (string)
+:   Choose an output format - can be 'json', 'yaml', or 'table'. Defaults to 'table'.
+
+`-j`, `--jmes-query` (string)
+:   Provide a JMESPath query to customize output.
+
+`--service-url` (string)
+:   Provide the base endpoint URL for the API.
+
+`-q`, `--quiet`
+:   Suppresses verbose messages.
+
+#### Example
+{: #cloudant-global-options-example}
+```sh
+ibmcloud cloudant
+    --output=json \
+    --jmes-query="[:10]" \
+    --service-url="https://myservice.test.cloud.ibm.com"
+    --quiet
+```
+Note: This example only demonstrates the global options available to all sub-commands and is not a valid command itself.
+
+### `ibmcloud cloudant config`
+{: #cloudant-cli-config-command}
+
+Global parameters can also be stored in persistent configuration so that they do not need to be manually specified each time the plugin is invoked. Each parameter can be configured with the `config` command and its subcommands.
+
+```sh
+ibmcloud cloudant config
+```
+
+### `ibmcloud cloudant config set`
+{: #cloudant-cli-config-set-command}
+
+Set a new config value for a specific option. Each subcommand of the `set` command maps to a global option. Each subcommand accepts a single argument, the string representation of the value to store for the option.
+
+```sh
+ibmcloud cloudant config set <option> <value>
+```
+
+#### Examples
+{: #cloudant-config-set-command-examples}
+
+```sh
+ibmcloud cloudant config set service-url \
+    'https://ibm.cloud.com/my-api'
+```
+
+### `ibmcloud cloudant config get`
+{: #cloudant-cli-config-get-command}
+
+Print out the currently set value for a specific option. Each subcommand of the `get` command maps to a global option.
+
+```sh
+ibmcloud cloudant config get <option>
+```
+
+#### Examples
+{: #cloudant-config-get-command-examples}
+
+```sh
+ibmcloud cloudant config get service-url
+```
+
+### `ibmcloud cloudant config unset`
+{: #cloudant-cli-config-unset-command}
+
+Unset the currently set value for a specific option. Each subcommand of the `unset` command maps to a global option.
+
+The subcommands available for this service are: `service-url`, .
+
+```sh
+ibmcloud cloudant config unset <option>
+```
+
+#### Examples
+{: #cloudant-config-unset-command-examples}
+
+```sh
+ibmcloud cloudant config unset service-url
+```
+
+### `ibmcloud cloudant config list`
+{: #cloudant-cli-config-list-command}
+
+List out all of the currently set config values.
+
+```sh
+ibmcloud cloudant config list
+```
+
+#### Examples
+{: #cloudant-config-list-command-examples}
+
+```sh
+ibmcloud cloudant config list
+```
 
 ## Server
 {: #cloudant-server-cli}
@@ -381,3 +566,4 @@ A JMESPath query is applied to the output of this command by default. The defaul
     throughput
 
 If a custom JMESPath query is provided, it will replace the default JMESPath.
+
