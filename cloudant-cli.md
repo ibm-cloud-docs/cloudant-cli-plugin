@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-07-26"
+lastupdated: "2023-09-01"
 
 subcollection: Cloudant-cli-plugin
 
@@ -292,7 +292,7 @@ ibmcloud cloudant capacity
 
 Example CapacityThroughputInformation response.
 
-```
+```tsv
 blocks	5
 query	25
 read	500
@@ -369,7 +369,7 @@ ibmcloud cloudant capacity-update --blocks 10
 
 Example CapacityThroughputInformation response.
 
-```
+```tsv
 blocks	10
 query	50
 read	1000
@@ -443,7 +443,7 @@ ibmcloud cloudant events-config
 
 Example ActivityTrackerEvents request and response.
 
-```
+```tsv
 management
 data
 ```
@@ -484,7 +484,7 @@ ibmcloud cloudant events-config-update --types TYPES
 {: #cloudant-events-config-update-cli-options}
 
 `--types` ([]string)
-:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. Allowable values: management, data. "management" is a required element of this array. Required.
+:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
 
     Allowable list items are: `management`, `data`. The minimum length is `1` item.
 
@@ -535,7 +535,7 @@ ibmcloud cloudant throughput
 
 Example CurrentThroughputInformation response.
 
-```
+```tsv
 query	13
 read	133
 write	42
