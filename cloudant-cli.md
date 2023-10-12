@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-09-01"
+lastupdated: "2023-10-12"
 
 subcollection: Cloudant-cli-plugin
 
@@ -134,7 +134,9 @@ The `classic` and the `c` subcommands were deprecated in version `0.0.5` and rem
 
 <!-- Generated CLI reference will be automatically pasted after this point -->
 ## Globals
+
 ### Commands
+
 #### `ibmcloud cloudant url`
 {: #cloudant-cli-url-command}
 
@@ -177,6 +179,7 @@ ibmcloud cloudant url \
 
 #### Example
 {: #cloudant-global-options-example}
+
 ```sh
 ibmcloud cloudant
     --output=json \
