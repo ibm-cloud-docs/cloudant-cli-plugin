@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-10-12"
+lastupdated: "2023-12-04"
 
 subcollection: Cloudant-cli-plugin
 
@@ -49,7 +49,7 @@ ibmcloud plugin install cloudant
 <!-- Optionally include any other post-installation configuration that might be required for your service. -->
 
 * Use [`ibmcloud login` command](https://cloud.ibm.com/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) for logging in to your {{site.data.keyword.cloud_notm}} account.
-* Set {{site.data.keyword.cloudant_short_notm}} service URL. For more information, see [Service configuration](#service-configuration).
+* Set the {{site.data.keyword.cloudant_short_notm}} service URL. For more information, see [Service configuration](#service-configuration).
 
 You're notified on the command line when updates to the {{site.data.keyword.cloud_notm}} CLI and plug-ins are available. Be sure to keep your CLI up to date so that you can use the latest commands. You can view the current version of all installed plug-ins by running `ibmcloud plugin list`.
 {: tip}
@@ -66,7 +66,7 @@ When you make a server resource request, the {{site.data.keyword.cloudant_short_
 Inline configuration overrides the global configuration and the environment variable setting, while global configuration overrides the environment variable setting.
 {: tip}
 
-If you are unsure about your server URL you can find it [by the instance ID of your cloud resource](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance). The instance ID can be found by the name of your service. The following example gets first the GUID then the CRN ID by service name (for example `Cloudant-fg`). Either of GUID and CRN ID can be used as `<resource-id>` to get the Cloudant instance URL.
+If you are unsure about your server URL, you can find it [by the instance ID of your cloud resource](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance). The instance ID can be found by the name of your service. The following example gets first the GUID then the CRN ID by service name (for example `Cloudant-fg`). Either of GUID and CRN ID can be used as `<resource-id>` to get the Cloudant instance URL.
 ```sh
 # Get GUID of the service instance by service name, which can be used as a <resource-id> later
 ibmcloud resource service-instance <service-name> --output json | jq -r '.[0].guid'
@@ -79,12 +79,12 @@ ibmcloud cloudant url -q --resource-id <resource-id>
 #### Inline configuration
 {: #cloudant-cli-inline-config}
 
-Inline configuration happens with the `--service-url` flag. All sub-commands like `events-config` or `capacity` can be used with inline configured service URL which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command.
+Inline configuration happens with the `--service-url` flag. All subcommands like `events-config` or `capacity` can be used with inline configured service URL, which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command.
 
 ```sh
-# Use events-config sub-command with inline configured service url
+# Use events-config subcommand with inline configured service url
 ibmcloud cloudant events-config --service-url <service-url>
-# Use capacity sub-command with inline configured service url
+# Use capacity subcommand with inline configured service url
 ibmcloud cloudant capacity --service-url <service-url>
 ```
 
@@ -97,18 +97,18 @@ ibmcloud cloudant events-config --service-url $(ibmcloud cloudant url -q --resou
 #### Global configuration
 {: #cloudant-cli-global-config}
 
-Global configuration happens with the [config sub-command](#cloudant-cli-config-command). This stores persistent configuration so that it does not need to be manually specified each time the plugin is invoked. The following example sets the service url globally which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command, then uses the set value with sub-commands like `events-config` or `capacity`.
+Global configuration happens with the [config subcommand](#cloudant-cli-config-command). This stores a persistent configuration so that it does not need to be manually specified each time that the plugin is invoked. The following example sets the service url globally, which comes from the `ibmcloud cloudant url --resource-id <resource-id>` command, then uses the set value with subcommands like `events-config` or `capacity`.
 
 ```sh
 # Set service url globally
 ibmcloud cloudant config set service-url <service-url>
-# Use events-config sub-command with globally configured service url
+# Use events-config subcommand with globally configured service url
 ibmcloud cloudant events-config
-# Use capacity sub-command with globally configured service url
+# Use capacity subcommand with globally configured service url
 ibmcloud cloudant capacity
 ```
 
-The following example shows a shorthand for setting service URL with the help of the `ibmcloud cloudant url` sub-command:
+The following example shows a shorthand for setting the service URL with the help of the `ibmcloud cloudant url` subcommand:
 
 ```sh
 ibmcloud cloudant config set service-url $(ibmcloud cloudant url -q --resource-id <resource-id>)
@@ -118,10 +118,10 @@ ibmcloud cloudant config set service-url $(ibmcloud cloudant url -q --resource-i
 #### Environment variable setting
 {: #cloudant-cli-env-var-setting}
 
-For this approach you need to set the `CLOUDANT_URL` environment variable.
+For this approach, you need to set the `CLOUDANT_URL` environment variable.
 
 You can define this variable two ways:
-1. Export them as environment variables, for example,`export CLOUDANT_URL=...`.
+1. Export them as environment variables, for example `export CLOUDANT_URL=...`.
 2. Store them in a [credentials file](/apidocs/cloudant?code=go#authentication-with-external-configuration).
 
 As an alternative to `ibmcloud login`, you can set the environment variable `CLOUDANT_APIKEY` to an IAM API key.
