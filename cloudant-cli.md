@@ -134,8 +134,10 @@ The `classic` and the `c` subcommands were deprecated in version `0.0.5` and rem
 
 <!-- Generated CLI reference will be automatically pasted after this point -->
 ## Globals
+{: #cloudant-cli-globals}
 
 ### Commands
+{: #cloudant-cli-commands}
 
 #### `ibmcloud cloudant url`
 {: #cloudant-cli-url-command}
