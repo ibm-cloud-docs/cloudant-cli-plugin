@@ -4,13 +4,11 @@ Documentation repository for cloudant-cli-plugin
 
 ## Staging links:
 
-* https://test.cloud.ibm.com/docs/cloudant-cli-plugin
-* https://test.cloud.ibm.com/docs/cloudant-cli-plugin?topic=Cloudant-cli-plugin-cloudant-cli
+* https://test.cloud.ibm.com/docs/Cloudant-cli-plugin
 
 ## Production links:
 
-* https://cloud.ibm.com/docs/cloudant-cli-plugin
-* https://cloud.ibm.com/docs/cloudant-cli-plugin?topic=Cloudant-cli-plugin-cloudant-cli
+* https://cloud.ibm.com/docs/Cloudant-cli-plugin
 
 ## Slack channels
 
