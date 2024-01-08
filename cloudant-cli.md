@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-12-04"
+lastupdated: "2024-01-08"
 
 subcollection: Cloudant-cli-plugin
 
@@ -49,7 +49,7 @@ ibmcloud plugin install cloudant
 <!-- Optionally include any other post-installation configuration that might be required for your service. -->
 
 * Use [`ibmcloud login` command](https://cloud.ibm.com/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login) for logging in to your {{site.data.keyword.cloud_notm}} account.
-* Set the {{site.data.keyword.cloudant_short_notm}} service URL. For more information, see [Service configuration](#service-configuration).
+* Set the {{site.data.keyword.cloudant_short_notm}} service URL. For more information, see [Service configuration](#cloudant-cli-service-config).
 
 You're notified on the command line when updates to the {{site.data.keyword.cloud_notm}} CLI and plug-ins are available. Be sure to keep your CLI up to date so that you can use the latest commands. You can view the current version of all installed plug-ins by running `ibmcloud plugin list`.
 {: tip}
@@ -61,7 +61,7 @@ Example: -->
 ### Service configuration
 {: #cloudant-cli-service-config}
 
-When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example, `https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the URL of your Cloudant instance first. You can set the URL by [inline configuration](#inline-configuration), [global configuration](#global-configuration), or [setting an environment variable](#environment-variable-setting).
+When you make a server resource request, the {{site.data.keyword.cloudant_short_notm}} account URL from the service credentials (for example, `https://account.appdomain.cloud`) is not available automatically in the plug-in. You need to set the URL of your Cloudant instance first. You can set the URL by [inline configuration](#cloudant-cli-inline-config), [global configuration](#cloudant-cli-global-config), or [setting an environment variable](#cloudant-cli-env-var-setting).
 
 Inline configuration overrides the global configuration and the environment variable setting, while global configuration overrides the environment variable setting.
 {: tip}
@@ -134,10 +134,10 @@ The `classic` and the `c` subcommands were deprecated in version `0.0.5` and rem
 
 <!-- Generated CLI reference will be automatically pasted after this point -->
 ## Globals
-{: #cloudant-cli-globals}
+{: #cloudant-globals}
 
 ### Commands
-{: #cloudant-cli-commands}
+{: #cloudant-commands}
 
 #### `ibmcloud cloudant url`
 {: #cloudant-cli-url-command}
