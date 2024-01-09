@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2021, 2023
+  years: 2021, 2024
 lastupdated: "2024-01-08"
 
 subcollection: Cloudant-cli-plugin
