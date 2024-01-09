@@ -4,7 +4,8 @@ Documentation repository for cloudant-cli-plugin
 
 ## Staging links:
 
-* https://test.cloud.ibm.com/docs/Cloudant-cli-plugin
+* content of the `draft` branch is on https://test.cloud.ibm.com/docs-draft/Cloudant-cli-plugin
+* content of the `review` branch is on https://test.cloud.ibm.com/docs/Cloudant-cli-plugin
 
 ## Production links:
 
