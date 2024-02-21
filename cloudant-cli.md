@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2024-01-09"
+  years: 2021, 2024
+lastupdated: "2024-02-21"
 
 subcollection: Cloudant-cli-plugin
 
@@ -178,6 +178,9 @@ ibmcloud cloudant url \
 
 `-q`, `--quiet`
 :   Suppresses verbose messages.
+
+`-v`, `--version`
+:   Prints the plugin version.
 
 #### Example
 {: #cloudant-global-options-example}
