@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-02-21"
+lastupdated: "2024-05-13"
 
 subcollection: Cloudant-cli-plugin
 
@@ -180,7 +180,7 @@ ibmcloud cloudant url \
 :   Suppresses verbose messages.
 
 `-v`, `--version`
-:   Prints the plugin version.
+:   Prints the plug-in version.
 
 #### Example
 {: #cloudant-global-options-example}
@@ -197,7 +197,7 @@ Note: This example only demonstrates the global options available to all sub-com
 ### `ibmcloud cloudant config`
 {: #cloudant-cli-config-command}
 
-Global parameters can also be stored in persistent configuration so that they do not need to be manually specified each time the plugin is invoked. Each parameter can be configured with the `config` command and its subcommands.
+Global parameters can also be stored in persistent configuration so that they do not need to be manually specified each time the plug-in is invoked. Each parameter can be configured with the `config` command and its subcommands.
 
 ```sh
 ibmcloud cloudant config
@@ -217,7 +217,7 @@ ibmcloud cloudant config set <option> <value>
 
 ```sh
 ibmcloud cloudant config set service-url \
-    'https://ibm.cloud.com/my-api'
+    'http://localhost:5984'
 ```
 
 ### `ibmcloud cloudant config get`
@@ -494,7 +494,7 @@ ibmcloud cloudant events-config-update --types TYPES
 `--types` ([]string)
 :   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
 
-    Allowable list items are: `management`, `data`. The minimum length is `1` item.
+    Allowable list items are: `management`, `data`. The maximum length is `2` items. The minimum length is `1` item.
 
 #### Example
 {: #cloudant-events-config-update-examples}
