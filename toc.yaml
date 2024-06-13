@@ -6,7 +6,6 @@ toc:
     path: Cloudant-cli-plugin
     label: IBM Cloudant CLI
     version: 2
-
   entries:
     - navgroup:
         id: reference
