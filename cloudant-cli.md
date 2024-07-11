@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-13"
+lastupdated: "2024-07-11"
 
 subcollection: Cloudant-cli-plugin
 
@@ -207,7 +207,7 @@ ibmcloud cloudant config set <option> <value>
 
 ```sh
 ibmcloud cloudant config set service-url \
-    'http://localhost:5984'
+    'https://~replace-with-cloudant-host~.cloudantnosqldb.appdomain.cloud'
 ```
 
 ### `ibmcloud cloudant config get`
