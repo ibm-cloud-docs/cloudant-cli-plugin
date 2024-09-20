@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-07-11"
+lastupdated: "2024-09-20"
 
 subcollection: Cloudant-cli-plugin
 
@@ -59,9 +59,9 @@ Inline configuration overrides the global configuration and the environment vari
 If you are unsure about your server URL, you can find it [by the instance ID of your cloud resource](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_service_instance). The instance ID can be found by the name of your service. The following example gets first the GUID then the CRN ID by service name (for example `Cloudant-fg`). Either of GUID and CRN ID can be used as `<resource-id>` to get the Cloudant instance URL.
 ```sh
 # Get GUID of the service instance by service name, which can be used as a <resource-id> later
-ibmcloud resource service-instance <service-name> --output json | jq -r '.[0].guid'
+ibmcloud resource service-instance <service-name> --guid
 # Get CRN ID of the service instance by service name, which can be used as a <resource-id> later
-ibmcloud resource service-instance <service-name> --output json | jq -r '.[0].id'
+ibmcloud resource service-instance <service-name> --crn
 # Get <service-url> of your Cloudant instance by resource ID (can be either the GUID or the CRN ID)
 ibmcloud cloudant url -q --resource-id <resource-id>
 ```
@@ -182,6 +182,7 @@ ibmcloud cloudant
     --service-url="https://myservice.test.cloud.ibm.com"
     --quiet
 ```
+{: pre}
 Note: This example only demonstrates the global options available to all sub-commands and is not a valid command itself.
 
 ### `ibmcloud cloudant config`
@@ -209,6 +210,7 @@ ibmcloud cloudant config set <option> <value>
 ibmcloud cloudant config set service-url \
     'https://~replace-with-cloudant-host~.cloudantnosqldb.appdomain.cloud'
 ```
+{: pre}
 
 ### `ibmcloud cloudant config get`
 {: #cloudant-cli-config-get-command}
@@ -225,6 +227,7 @@ ibmcloud cloudant config get <option>
 ```sh
 ibmcloud cloudant config get service-url
 ```
+{: pre}
 
 ### `ibmcloud cloudant config unset`
 {: #cloudant-cli-config-unset-command}
@@ -243,6 +246,7 @@ ibmcloud cloudant config unset <option>
 ```sh
 ibmcloud cloudant config unset service-url
 ```
+{: pre}
 
 ### `ibmcloud cloudant config list`
 {: #cloudant-cli-config-list-command}
@@ -259,6 +263,7 @@ ibmcloud cloudant config list
 ```sh
 ibmcloud cloudant config list
 ```
+{: pre}
 
 ## Server
 {: #cloudant-server-cli}
@@ -348,9 +353,9 @@ ibmcloud cloudant capacity-update --blocks BLOCKS
 {: #cloudant-capacity-update-cli-options}
 
 `--blocks` (int64)
-:   A number of blocks of throughput units. A block consists of 100 reads/sec, 50 writes/sec, and 5 global queries/sec of provisioned throughput capacity. Required.
+:   A number of blocks of throughput units. A block consists of 100 reads/sec, 50 writes/sec, and 5 global queries/sec of provisioned throughput capacity. Not available for some plans. Required.
 
-    The minimum value is `0`.
+    The minimum value is `1`.
 
 #### Example
 {: #cloudant-capacity-update-examples}
@@ -564,4 +569,3 @@ A JMESPath query is applied to the output of this command by default. The defaul
     throughput
 
 If a custom JMESPath query is provided, it will replace the default JMESPath.
-
