@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-09-20"
+lastupdated: "2024-09-23"
 
 subcollection: Cloudant-cli-plugin
 
@@ -183,6 +183,7 @@ ibmcloud cloudant
     --quiet
 ```
 {: pre}
+
 Note: This example only demonstrates the global options available to all sub-commands and is not a valid command itself.
 
 ### `ibmcloud cloudant config`
