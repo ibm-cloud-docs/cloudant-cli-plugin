@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-09-23"
+lastupdated: "2024-11-13"
 
 subcollection: Cloudant-cli-plugin
 
@@ -334,11 +334,19 @@ Example CapacityThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-capacity-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default. The default JMESPath is:
+A JMESPath query will be applied to this output of this command by default, if one is not provided by the user. The exact query will depend on the scenario and the output format requested.
+You can see the condition for each default JMESPath query in the following table:
 
-    current.throughput
+| Response | Output | Query |
+| -------- | ------ | ----- |
+| Success | Default | `current.throughput` |
+|  | Table | `current.throughput` |
+| Error | Default | `current.throughput` |
+|  | Table | `current.throughput` |
+| All pages | Default | `current.throughput` |
+|  | Table | `current.throughput` |
 
-If a custom JMESPath query is provided, it will replace the default JMESPath.
+If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
 ### `ibmcloud cloudant capacity-update`
 {: #cloudant-cli-capacity-update-command}
@@ -411,11 +419,19 @@ Example CapacityThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-capacity-update-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default. The default JMESPath is:
+A JMESPath query will be applied to this output of this command by default, if one is not provided by the user. The exact query will depend on the scenario and the output format requested.
+You can see the condition for each default JMESPath query in the following table:
 
-    target.throughput
+| Response | Output | Query |
+| -------- | ------ | ----- |
+| Success | Default | `target.throughput` |
+|  | Table | `target.throughput` |
+| Error | Default | `target.throughput` |
+|  | Table | `target.throughput` |
+| All pages | Default | `target.throughput` |
+|  | Table | `target.throughput` |
 
-If a custom JMESPath query is provided, it will replace the default JMESPath.
+If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
 ## Monitoring
 {: #cloudant-monitoring-cli}
@@ -468,11 +484,19 @@ Example ActivityTrackerEvents request and response.
 #### Default JMESPath
 {: #cloudant-events-config-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default. The default JMESPath is:
+A JMESPath query will be applied to this output of this command by default, if one is not provided by the user. The exact query will depend on the scenario and the output format requested.
+You can see the condition for each default JMESPath query in the following table:
 
-    types
+| Response | Output | Query |
+| -------- | ------ | ----- |
+| Success | Default | `types` |
+|  | Table | `types` |
+| Error | Default | `types` |
+|  | Table | `types` |
+| All pages | Default | `types` |
+|  | Table | `types` |
 
-If a custom JMESPath query is provided, it will replace the default JMESPath.
+If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
 ### `ibmcloud cloudant events-config-update`
 {: #cloudant-cli-events-config-update-command}
@@ -565,8 +589,16 @@ Example CurrentThroughputInformation response.
 #### Default JMESPath
 {: #cloudant-throughput-default-jmespath}
 
-A JMESPath query is applied to the output of this command by default. The default JMESPath is:
+A JMESPath query will be applied to this output of this command by default, if one is not provided by the user. The exact query will depend on the scenario and the output format requested.
+You can see the condition for each default JMESPath query in the following table:
 
-    throughput
+| Response | Output | Query |
+| -------- | ------ | ----- |
+| Success | Default | `throughput` |
+|  | Table | `throughput` |
+| Error | Default | `throughput` |
+|  | Table | `throughput` |
+| All pages | Default | `throughput` |
+|  | Table | `throughput` |
 
-If a custom JMESPath query is provided, it will replace the default JMESPath.
+If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
