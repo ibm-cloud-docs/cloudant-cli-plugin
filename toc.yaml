@@ -5,6 +5,7 @@ toc:
     href: /docs/Cloudant-cli-plugin
     path: Cloudant-cli-plugin
     label: IBM Cloudant CLI
+    navigation: hidden
     version: 2
   entries:
     - navgroup:
