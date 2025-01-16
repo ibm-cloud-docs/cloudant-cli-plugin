@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-11-13"
+  years: 2021, 2025
+lastupdated: "2025-01-16"
 
 subcollection: Cloudant-cli-plugin
 
@@ -122,6 +122,16 @@ As an alternative to `ibmcloud login`, you can set the environment variable `CLO
 
 The `classic` and the `c` subcommands were deprecated in version `0.0.5` and removed from version `0.1.0`. The operations from the `classic` command are available on the `cloudant` command. Track the [changes log](/docs/Cloudant?topic=Cloudant-cli-change-log) for changes in the interface. {: deprecated}
 
+
+---
+
+copyright:
+  years: 2025
+lastupdated: "2025-01-15"
+
+keywords: cloudant, cli, plugin
+
+---
 
 ## Globals
 {: #cloudant-globals}
@@ -345,6 +355,7 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `current.throughput` |
 | All pages | Default | `current.throughput` |
 |  | Table | `current.throughput` |
+{: caption="Table 1. Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
@@ -364,7 +375,7 @@ ibmcloud cloudant capacity-update --blocks BLOCKS
 `--blocks` (int64)
 :   A number of blocks of throughput units. A block consists of 100 reads/sec, 50 writes/sec, and 5 global queries/sec of provisioned throughput capacity. Not available for some plans. Required.
 
-    The minimum value is `1`.
+    The maximum value is `100`. The minimum value is `1`.
 
 #### Example
 {: #cloudant-capacity-update-examples}
@@ -430,6 +441,7 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `target.throughput` |
 | All pages | Default | `target.throughput` |
 |  | Table | `target.throughput` |
+{: caption="Table 1. Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
@@ -495,6 +507,7 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `types` |
 | All pages | Default | `types` |
 |  | Table | `types` |
+{: caption="Table 1. Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
@@ -600,5 +613,6 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `throughput` |
 | All pages | Default | `throughput` |
 |  | Table | `throughput` |
+{: caption="Table 1. Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
