@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-01-16"
+lastupdated: "2025-03-13"
 
 subcollection: Cloudant-cli-plugin
 
@@ -21,7 +21,7 @@ keywords: Cloudant CLI, Cloudant command line,  Cloudant terminal, Cloudant shel
 
 
 
-The {{site.data.keyword.cloud}} Command Line Interface (CLI) provides extra capabilities for service offerings. You can use {{site.data.keyword.cloudant_short_notm}} CLI plug-in to manage throughput details and event types that are being sent from your {{site.data.keyword.cloudant_short_notm}} account to the {{site.data.keyword.at_full}} service.
+The {{site.data.keyword.cloud}} Command Line Interface (CLI) provides more capabilities for service offerings. You can use {{site.data.keyword.cloudant_short_notm}} CLI plug-in to manage throughput details and event types that are being sent from your {{site.data.keyword.cloudant_short_notm}} account to the {{site.data.keyword.at_full}} service.
 {: shortdesc}
 
 
@@ -127,11 +127,16 @@ The `classic` and the `c` subcommands were deprecated in version `0.0.5` and rem
 
 copyright:
   years: 2025
-lastupdated: "2025-01-15"
+lastupdated: "2025-02-27"
 
 keywords: cloudant, cli, plugin
 
 ---
+
+{{site.data.keyword.attribute-definition-list}}
+
+# Cloudant CLI
+{: #cloudant-cli}
 
 ## Globals
 {: #cloudant-globals}
