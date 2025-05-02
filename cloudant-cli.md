@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-03-13"
+lastupdated: "2025-05-02"
 
 subcollection: Cloudant-cli-plugin
 
@@ -127,7 +127,7 @@ The `classic` and the `c` subcommands were deprecated in version `0.0.5` and rem
 
 copyright:
   years: 2025
-lastupdated: "2025-02-27"
+lastupdated: "2025-04-24"
 
 keywords: cloudant, cli, plugin
 
@@ -201,7 +201,7 @@ ibmcloud cloudant
 
 Note: This example only demonstrates the global options available to all sub-commands and is not a valid command itself.
 
-### `ibmcloud cloudant config`
+## Config
 {: #cloudant-cli-config-command}
 
 Global parameters can also be stored in persistent configuration so that they do not need to be manually specified each time the plug-in is invoked. Each parameter can be configured with the `config` command and its subcommands.
@@ -360,7 +360,7 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `current.throughput` |
 | All pages | Default | `current.throughput` |
 |  | Table | `current.throughput` |
-{: caption="Table 1. Default JMESPath" caption-side="bottom"}
+{: caption="Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
@@ -446,7 +446,7 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `target.throughput` |
 | All pages | Default | `target.throughput` |
 |  | Table | `target.throughput` |
-{: caption="Table 1. Default JMESPath" caption-side="bottom"}
+{: caption="Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
@@ -458,7 +458,7 @@ Commands for Monitoring resource.
 ### `ibmcloud cloudant events-config`
 {: #cloudant-cli-events-config-command}
 
-Check event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance.
+Check event types sent to IBM Cloud Activity Tracker Event Routing for the IBM Cloudant instance.
 
 ```sh
 ibmcloud cloudant events-config
@@ -512,14 +512,14 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `types` |
 | All pages | Default | `types` |
 |  | Table | `types` |
-{: caption="Table 1. Default JMESPath" caption-side="bottom"}
+{: caption="Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
 
 ### `ibmcloud cloudant events-config-update`
 {: #cloudant-cli-events-config-update-command}
 
-Configure event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance.
+Configure event types sent to IBM Cloud Activity Tracker Event Routing for the IBM Cloudant instance.
 
 ```sh
 ibmcloud cloudant events-config-update --types TYPES
@@ -530,7 +530,7 @@ ibmcloud cloudant events-config-update --types TYPES
 {: #cloudant-events-config-update-cli-options}
 
 `--types` ([]string)
-:   An array of event types that are being sent to IBM Cloud Activity Tracker for the IBM Cloudant instance. "management" is a required element of this array. Required.
+:   An array of event types sent to IBM Cloud Activity Tracker Event Routing for the IBM Cloudant instance. "management" is a required element of this array. Required.
 
     Allowable list items are: `management`, `data`. The maximum length is `2` items. The minimum length is `1` item.
 
@@ -618,6 +618,6 @@ You can see the condition for each default JMESPath query in the following table
 |  | Table | `throughput` |
 | All pages | Default | `throughput` |
 |  | Table | `throughput` |
-{: caption="Table 1. Default JMESPath" caption-side="bottom"}
+{: caption="Default JMESPath" caption-side="bottom"}
 
 If a custom JMESPath query is provided, it will replace any of the JMESPath in the table above.
